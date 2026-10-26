@@ -1,4 +1,4 @@
-# Walmart Hurricane Analysis — Project Charter
+# Walmart Hurricane Analysis: Project Charter
 
 ## Project scope
 Analyze Walmart transaction and weather data to investigate demand changes around hurricane-related conditions. This is a week-one checkpoint; results will be reported only after running analysis.
