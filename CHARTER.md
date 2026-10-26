@@ -14,8 +14,8 @@ Analyze Walmart transaction and weather data to investigate demand changes aroun
 ## Research questions and owners
 | Question | Owner | Status |
 |---|---|---|
-| Q1 — Demand surge | Suhail Abdulwasi | Not started |
-| Q2 — SKU consolidation | Suhail Abdulwasi | Not started |
+| Q1 — Demand surge | Suhail Abdulwasi | in progress |
+| Q2 — SKU consolidation | Suhail Abdulwasi | in progress|
 | Q3 — Weather correlation | Suhail Abdulwasi | Not started |
 | Q4 — Store and geography | Suhail Abdulwasi | Not started |
 | Q5 — Signal or artifact | Suhail Abdulwasi | Not started |
