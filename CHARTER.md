@@ -1,48 +1,59 @@
-# Walmart Hurricane Analysis: Project Charter
+# Walmart Hurricane Analytics: Project Charter
 
-## Project scope
-Analyze Walmart transaction and weather data to investigate demand changes around hurricane-related conditions. This is a week one checkpoint, with preliminary findings documented in the project notebook.
+Project member
 
-## Project member
-Suhail Abdulwasi (`suhailabdulwasi`) is currently working individually. Instructor approval is pending.
+Suhail Abdulwasi completed the project independently.
 
-## Responsibilities and coordination
-Notebook owner this week: Suhail Abdulwasi
+Project scope
 
-Meeting time: Not applicable while working individually
+Analyze synthetic Walmart transactions from September 2024 alongside real historical weather to investigate pre-hurricane purchasing patterns and develop evidence-backed stocking recommendations.
 
-Responsibilities: Source data profiling, cleaning, SKU consolidation, weather integration, exploratory visualization, and documentation.
+Responsibilities
 
-## Research questions and owners
+Suhail handled data loading, cleaning, SKU consolidation, weather API integration, SQLite queries, visualizations, analysis, and documentation.
 
-| Question | Owner | Status |
-| --- | --- | --- |
-| Q1: Demand surge | Suhail Abdulwasi | In progress |
-| Q2: SKU consolidation | Suhail Abdulwasi | In progress |
-| Q3: Weather correlation | Suhail Abdulwasi | Not started |
-| Q4: Store and geography | Suhail Abdulwasi | Not started |
-| Q5: Signal or artifact | Suhail Abdulwasi | Not started |
+Research questions and final status
 
-## Data quality risks to investigate
-1. Exact duplicate transactions were confirmed and 30 were removed.
-2. Unit prices were converted from text to numeric values.
-3. A total of 130 negative quantity records were flagged for review.
-4. A total of 884 timestamps remained unparseable after mixed format parsing.
-5. Store identifiers and date or timezone alignment still require join validation.
+1. Demand surge identification — Completed. Compared average daily category sales during September 5–18 with September 19–25. Breakfast Foods had the largest relative increase at 4.08 times baseline.
 
-## Cleaning decisions
-The initial cleaning function removes exact duplicates, converts unit prices to numeric values, parses mixed timestamp formats, standardizes store identifiers, and flags negative quantities without silently deleting them. A six entry decision log is recorded in the notebook. Some entries count rows processed rather than values actually changed and will be refined during further validation.
+2. SKU consolidation — Completed. Reviewed all 45 catalog SKUs and applied a conservative mapping that reduced the catalog to 38 canonical identifiers while preserving total recorded sales quantities at 49,584. Uncertain matches and conflicting package sizes remained separate.
 
-## Progress at checkpoint
-The project repository and charter have been established. Initial cleaning reduced the transaction dataset from 25,562 to 25,532 rows after removing 30 exact duplicates. The pipeline identified 130 negative quantity records and 884 unparseable timestamps for further review.
+3. Weather correlation — Completed. Retrieved real Open-Meteo precipitation, wind, and pressure data, validated daily joins, and examined correlations at different lags.
 
-Initial SKU consolidation reduced 45 catalog SKUs to 43 canonical products by grouping three equivalent strawberry Pop Tarts 4 pack SKUs while keeping the 6 pack separate.
+4. Store geography — Completed. Compared surge magnitude and timing across 12 stores, identified outliers, and examined approximate forecast-path proximity for 11 stores with available coordinates.
 
-Preliminary demand analysis found that average daily transaction record volume was approximately 3.06 times the selected baseline during September 23 to 25, 2024, ahead of Hurricane Helene's September 26 landfall. A daily volume chart was generated. These are preliminary counts based on records with valid timestamps, not a fully validated unique order measure.
+5. Signal versus artifact — Completed. Compared board-game and playing-card sales, investigated discrepancies between SQLite and transaction totals, reviewed inventory evidence, and provided a cautious stocking recommendation.
 
-An Open Meteo API request retrieved 30 days of historical weather data. Weather and sales integration and correlation analysis have not yet been completed.
+Data and cleaning
 
-## Risks and next steps
-The largest remaining technical risk is unreliable joins between Walmart transactions, store information, and weather data due to inconsistent identifiers, missing timestamps, or timezone differences. By October 28, 2026, Suhail will review unresolved timestamp and quantity issues, standardize store identifiers, and test a weather and sales join before expanding the analysis.
+The notebook loads all four supplied CSV files and the SQLite database. Exact duplicate removal reduced transactions from 25,562 to 25,532 rows. Dates, quantities, prices, category labels, and store identifiers were standardized as needed for the analyses.
 
-Individual work approval remains pending. The assignment specifies teams of 2 to 4 students.
+Daily category analysis excluded 1,011 records with unusable timestamps, categories, or quantities. Pop-Tarts daily analysis excluded 54 rows without usable timestamps. SKU consolidation included assertions confirming that total recorded quantities were preserved.
+
+Analysis periods
+
+Baseline: September 5–18, 2024, fourteen days.
+Surge: September 19–25, 2024, seven days.
+Landfall reference date: September 26, 2024.
+
+Comparisons use average daily sales rather than period totals to account for unequal window lengths.
+
+Weather and geographic integration
+
+Historical Orlando weather was requested in America/New_York time and matched to daily sales under the assumption that transaction timestamps represent local time. The validated weather join preserved all 30 daily sales rows.
+
+The geographic comparison uses Helene's September 24, 2024 NHC forecast as an external reference for the synthetic sales data. Tallahassee was excluded from distance calculations because its coordinates were missing.
+
+Deliverables
+
+The final notebook contains all five analytical answers, supporting visualizations, five reflection responses, and the final recommendation. The README explains the project, data sources, dependencies, and how to run the notebook.
+
+Limitations
+
+Transactions are synthetic, and weather represents one location and month. Correlations and selected lags do not establish causation. The forecast was issued after measured purchasing onset, and centerline distances are approximate.
+
+Missing timestamps, uncertain package definitions, disagreements between SQLite and transaction totals, and incomplete inventory snapshots limit operational conclusions.
+
+Final recommendation
+
+Prioritize Emergency Supplies and Breakfast Foods, consolidate equivalent SKU demand, and allocate stock using verified store inventory needs. Increase board-game stock cautiously while reconciling sales sources, package definitions, and incoming inventory.
