@@ -14,15 +14,15 @@ Suhail handled data loading, cleaning, SKU consolidation, weather API integratio
 
 Research questions and final status
 
-1. Demand surge identification — Completed. Compared average daily category sales during September 5–18 with September 19–25. Breakfast Foods had the largest relative increase at 4.08 times baseline.
+1. Demand surge identification: Completed. Compared average daily category sales during September 5–18 with September 19–25. Breakfast Foods had the largest relative increase at 4.08 times baseline.
 
-2. SKU consolidation — Completed. Reviewed all 45 catalog SKUs and applied a conservative mapping that reduced the catalog to 38 canonical identifiers while preserving total recorded sales quantities at 49,584. Uncertain matches and conflicting package sizes remained separate.
+2. SKU consolidation: Completed. Reviewed all 45 catalog SKUs and applied a conservative mapping that reduced the catalog to 38 canonical identifiers while preserving total recorded sales quantities at 49,584. Uncertain matches and conflicting package sizes remained separate.
 
-3. Weather correlation — Completed. Retrieved real Open-Meteo precipitation, wind, and pressure data, validated daily joins, and examined correlations at different lags.
+3. Weather correlation: Completed. Retrieved real Open-Meteo precipitation, wind, and pressure data, validated daily joins, and examined correlations at different lags.
 
-4. Store geography — Completed. Compared surge magnitude and timing across 12 stores, identified outliers, and examined approximate forecast-path proximity for 11 stores with available coordinates.
+4. Store geography: Completed. Compared surge magnitude and timing across 12 stores, identified outliers, and examined approximate forecast-path proximity for 11 stores with available coordinates.
 
-5. Signal versus artifact — Completed. Compared board-game and playing-card sales, investigated discrepancies between SQLite and transaction totals, reviewed inventory evidence, and provided a cautious stocking recommendation.
+5. Signal versus artifact: Completed. Compared board-game and playing-card sales, investigated discrepancies between SQLite and transaction totals, reviewed inventory evidence, and provided a cautious stocking recommendation.
 
 Data and cleaning
 
